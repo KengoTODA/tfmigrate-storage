@@ -107,7 +107,7 @@ func TestStorageRead(t *testing.T) {
 			ok:       false,
 		},
 		{
-			desc: "key does not exist",
+			desc: "object does not exist",
 			config: &Config{
 				Bucket: "tfmigrate-test",
 				Name:   "not_exist.json",
