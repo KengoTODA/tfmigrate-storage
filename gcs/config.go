@@ -12,9 +12,6 @@ type Config struct {
 	Bucket string `hcl:"bucket"`
 	// Path to the migration history file.
 	Key string `hcl:"key"`
-	// Local path to Google Cloud Platform account credentials in JSON format.
-	// If unset, Google Application Default Credentials are used.
-	Credentials string `hcl:"credentials,optional"`
 	// GCS prefix inside the bucket.
 	// Named states for workspaces are stored in an object called <prefix>/<name>.tfstate.
 	Prefix string `hcl:"prefix,optional"`

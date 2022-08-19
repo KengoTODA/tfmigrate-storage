@@ -11,10 +11,9 @@ func TestConfigNewStorage(t *testing.T) {
 		{
 			desc: "valid",
 			config: &Config{
-				Bucket:      "tfmigrate-test",
-				Key:         "tfmigrate/history.json",
-				Credentials: "path/to/credentials.json",
-				Prefix:      "prefix",
+				Bucket: "tfmigrate-test",
+				Key:    "tfmigrate/history.json",
+				Prefix: "prefix",
 			},
 			ok: true,
 		},
