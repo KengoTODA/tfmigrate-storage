@@ -20,7 +20,7 @@ type Adapter struct {
 }
 
 func (a Adapter) Read(ctx context.Context) ([]byte, error) {
-	r, err := a.client.Bucket(a.config.Bucket).Object(a.config.Bucket).NewReader(ctx)
+	r, err := a.client.Bucket(a.config.Bucket).Object(a.config.Name).NewReader(ctx)
 	if err != nil {
 		return nil, err
 	}
