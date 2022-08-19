@@ -20,7 +20,7 @@ type Adapter struct {
 }
 
 func (a Adapter) Read(ctx context.Context) ([]byte, error) {
-	r, err := a.client.Bucket(a.config.Bucket).Object(a.config.Key).NewReader(ctx)
+	r, err := a.client.Bucket(a.config.Bucket).Object(a.config.Bucket).NewReader(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -28,17 +28,17 @@ func (a Adapter) Read(ctx context.Context) ([]byte, error) {
 
 	body, err := ioutil.ReadAll(r)
 	if err != nil {
-		return nil, fmt.Errorf("failed reading from gcs://%s/%s: %w", a.config.Bucket, a.config.Key, err)
+		return nil, fmt.Errorf("failed reading from gcs://%s/%s: %w", a.config.Bucket, a.config.Name, err)
 	}
 	return body, nil
 }
 
 func (a Adapter) Write(ctx context.Context, p []byte) error {
-	w := a.client.Bucket(a.config.Bucket).Object(a.config.Key).NewWriter(ctx)
+	w := a.client.Bucket(a.config.Bucket).Object(a.config.Name).NewWriter(ctx)
 	_, err := w.Write(p)
 
 	if err != nil {
-		return fmt.Errorf("failed writing to gcs://%s/%s: %w", a.config.Bucket, a.config.Key, err)
+		return fmt.Errorf("failed writing to gcs://%s/%s: %w", a.config.Bucket, a.config.Name, err)
 	}
 	return w.Close()
 }

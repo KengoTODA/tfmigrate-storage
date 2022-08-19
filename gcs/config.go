@@ -11,10 +11,7 @@ type Config struct {
 	// The name of the GCS bucket.
 	Bucket string `hcl:"bucket"`
 	// Path to the migration history file.
-	Key string `hcl:"key"`
-	// GCS prefix inside the bucket.
-	// Named states for workspaces are stored in an object called <prefix>/<name>.tfstate.
-	Prefix string `hcl:"prefix,optional"`
+	Name string `hcl:"key"`
 
 	Endpoint string `hcl:"endpoint,optional"`
 }

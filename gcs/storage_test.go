@@ -33,7 +33,7 @@ func TestStorageWrite(t *testing.T) {
 			desc: "simple",
 			config: &Config{
 				Bucket: "tfmigrate-test",
-				Key:    "tfmigrate/history.json",
+				Name:   "tfmigrate/history.json",
 			},
 			client: &mockClient{
 				err: nil,
@@ -45,7 +45,7 @@ func TestStorageWrite(t *testing.T) {
 			desc: "bucket does not exist",
 			config: &Config{
 				Bucket: "not-exist-bucket",
-				Key:    "tfmigrate/history.json",
+				Name:   "tfmigrate/history.json",
 			},
 			client: &mockClient{
 				err: gcStorage.ErrBucketNotExist,
@@ -84,7 +84,7 @@ func TestStorageRead(t *testing.T) {
 			desc: "simple",
 			config: &Config{
 				Bucket: "tfmigrate-test",
-				Key:    "tfmigrate/history.json",
+				Name:   "tfmigrate/history.json",
 			},
 			client: &mockClient{
 				dataToRead: []byte("foo"),
@@ -97,7 +97,7 @@ func TestStorageRead(t *testing.T) {
 			desc: "bucket does not exist",
 			config: &Config{
 				Bucket: "not-exist-bucket",
-				Key:    "tfmigrate/history.json",
+				Name:   "tfmigrate/history.json",
 			},
 			client: &mockClient{
 				dataToRead: nil,
@@ -110,7 +110,7 @@ func TestStorageRead(t *testing.T) {
 			desc: "key does not exist",
 			config: &Config{
 				Bucket: "tfmigrate-test",
-				Key:    "not_exist.json",
+				Name:   "not_exist.json",
 			},
 			client: &mockClient{
 				err: gcStorage.ErrObjectNotExist,
