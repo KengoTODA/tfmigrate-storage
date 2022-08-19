@@ -11,7 +11,7 @@ type Config struct {
 	// The name of the GCS bucket.
 	Bucket string `hcl:"bucket"`
 	// Path to the migration history file.
-	Name string `hcl:"key"`
+	Name string `hcl:"name"`
 
 	Endpoint string `hcl:"endpoint,optional"`
 }
