@@ -28,10 +28,32 @@ func NewStorage(config *Config, client Client) (*Storage, error) {
 }
 
 func (s *Storage) Write(ctx context.Context, b []byte) error {
+	if s.client == nil {
+		client, err := gcStorage.NewClient(ctx)
+		if err != nil {
+			return err
+		}
+		s.client = Adapter{
+			config: *s.config,
+			client: client,
+		}
+	}
+
 	return s.client.Write(ctx, b)
 }
 
 func (s *Storage) Read(ctx context.Context) ([]byte, error) {
+	if s.client == nil {
+		client, err := gcStorage.NewClient(ctx)
+		if err != nil {
+			return nil, err
+		}
+		s.client = Adapter{
+			config: *s.config,
+			client: client,
+		}
+	}
+
 	r, err := s.client.Read(ctx)
 	if err == gcStorage.ErrObjectNotExist {
 		return []byte{}, nil
